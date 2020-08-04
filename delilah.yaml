@@ -1,0 +1,594 @@
+swagger: '2.0'
+info:
+  description: Delilah Restó is a back-end application built in Node, Express and MySQL built for the Acamica's Full Stack Web Developer Course. 
+  version: 1.0.0
+  title: Delilah Resto API
+  
+  contact:
+    email: medicigaston.la@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: "users"
+  description: "Operations with users"
+- name: "products"
+  description: "Operations with products"
+- name: "orders"
+  description: "Operations with orders"
+  
+securityDefinitions:
+   # X-API-Key: abcdef12345
+   APIKeyHeader:
+     type: apiKey
+     in: header
+     name: X-API-Key
+
+paths:
+
+  /productos:
+  
+    get:
+      tags:
+      - products
+      summary: Lists all products
+      description: Endpoint that lists all products from such endpoint
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/productItem'
+              
+    post:
+      tags:
+      - products
+      summary: adds a product item
+      description: Adds a product to the system. Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - in: body
+        name: body
+        description: Product to add
+        schema:
+          $ref: '#/definitions/productItem'
+      responses:
+        201:
+          description: product created
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/productItem'
+        400:
+          description: Product Duplication
+        403:
+          description: Forbidden Access. Admin privileges required
+        404:
+          description: No user with such username in db 
+          
+  /productos/{id}:
+  
+    get:
+      tags:
+      - products
+      summary: Lists a product
+      description: Endpoint that list a product from based on its id
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: unique product id
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/productItem'
+      
+    put:
+      tags:
+      - products
+      summary: modifies a product item
+      description: Modifies a product from the system. Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: unique product id
+        type: string
+      - in: body
+        name: body
+        description: Product to add
+        schema:
+          $ref: '#/definitions/productItem'
+      security:
+      - APIKeyHeader: []
+      responses:
+        201:
+          description: product modified
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/productItem'
+        403:
+          description: Forbidden Access. Admin privileges required
+        404:
+          description: No user with such username in db 
+    
+    delete:
+      tags:
+      - products
+      summary: Delete product. 
+      description: Product to delete. Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: unique product id
+        type: string
+      security:
+      - APIKeyHeader: []
+      responses:
+        200:
+          description: Product erased
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/productItem'
+        403:
+          description: Forbidden Access. Admin privileges required
+        404:
+          description: No user with such username in db 
+    
+  /usuarios/register:
+    
+    post:
+      tags:
+        - users
+      summary: Create user
+      description: Creates a new user in the db.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Product to add
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/userItem'
+      security: []
+      responses:
+          200:
+            description: User correctly added to database
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/userItem'
+          403:
+            description: Forbidden Access
+          409:
+            description: Username already exists, please pick another
+          
+  /usuarios/login:
+  
+    post:
+      tags:
+      - users
+      summary: User and admin Login
+      description: User Login.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Returns token to both admin and user. 
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/userLoginBody'
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: Login succesful
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/userToken'
+          401:
+            description: wrong password
+          404:
+            description: user doesn't exists in db
+            
+  /usuarios/favoritos:
+  
+    get:
+      tags:
+      - users
+      summary: gets all users products that were favorited.
+      description: gets users favorite products. User Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: Login succesful
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/userFavorite'
+          404:
+            description: no favorite products
+            
+    post:
+      tags:
+      - users
+      summary: posts users product that was favorited
+      description: Posts favorite. User Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      responses:
+          201:
+            description: favorite added
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/userFavorite'
+          404:
+            description: user doesn't exists in db
+              
+  
+  /usuarios:
+  
+    get:
+      tags: 
+      - users
+      summary: gets all users from db. Admin Api Key required.
+      description: gets users.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: All Users
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/userItem'
+          403:
+            description: Forbidden Access
+          
+              
+  /usuarios/usuario:
+  
+    get:
+      tags: 
+      - users
+      summary: gets user info from db
+      description: gets user info. User/Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: user info
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/userItem'
+          403:
+            description: Forbidden Access
+  
+  /pedidos:
+  
+    get:
+      tags:
+      - orders
+      summary: gets all orders
+      description: gets the orders from all the users. Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: user info
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pedidosItem'
+          403:
+            description: Forbidden Access
+           
+    post:
+      tags:
+      - orders
+      summary: posts order
+      description: Posts order. User/Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: order info 
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/pedidoItem'
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: Order Added 
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pedidosItem'
+    
+  
+  
+  /pedidos/user:
+  
+    get:
+      tags:
+      - orders
+      summary: gets all orders from user
+      description: gets orders to users. User/Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: user info
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pedidosItem'
+    
+  /pedidos/{id}:          
+    
+    put:
+      tags:
+      - orders
+      summary: modify order
+      description: modifies status order. Admin Api Key required.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: unique product id
+        type: string
+      - in: body
+        name: body
+        description: order info 
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/estadoItem'
+      security:
+      - APIKeyHeader: []
+      responses:
+          200:
+            description: Order Added 
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pedidosItem'
+          403:
+            description: Forbidden Access
+    
+            
+              
+definitions:
+  productItem:
+    type: object
+    required:
+    - nombre_producto
+    - imagen
+    - PRECIO
+    properties:
+      id:
+        type: integer
+        example: 1
+      nombre_producto: 
+        type: string
+        example: hamburguesa
+      imagen:
+        type: string
+        format: url
+        example: 'www.image.com/image.jpg'
+      precio:
+        type: number
+        example: 120.00
+        
+  userItem:
+    type: object
+    required:
+    - usuario
+    - nombre_apellido
+    - email
+    - tel
+    - direccion
+    properties:
+      id:
+        type: integer
+        example: 1
+      usuario: 
+        type: string
+        example: jon56
+      nombre_apellido:
+        type: string
+        example: Juan Perez
+      email:
+        type: string
+        example: juanperez@acamica.com
+      tel:
+        type: integer
+        example: 249465342
+      direccion: 
+        type: string
+        example: Los Rosales 962
+  
+  userLoginBody:
+      type: object
+      required:
+      - usuario || email
+      - password
+      properties:
+        usuario: 
+          type: string
+          example: jon56
+        email:
+          type: string
+          example: juanperez@acamica.com
+        password:
+          type: string
+          example: Bafertists76
+          
+  userToken:
+      type: object
+      properties:
+        token: 
+          type: string
+          example: jon56
+        email:
+          type: string
+          example: eyJhbGciOiJIUzI1NiJ9.cmFtb25hZmxvd2Vycw.EvYTJeDDcl5bRH6aFiLAIr89VwFxG3a03JsXqxziBmU
+          
+  userFavorite:
+      type: object
+      properties:
+        token: 
+          type: string
+          example: milanesa de carne
+          
+  pedidosItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        dt:
+          type: string
+          example: 2020-06-10T22:31:46.000Z
+        card:
+          type: boolean
+          example: 1
+        nombre_estado:
+          type: string
+          example: NUEVO 
+        nombre_apellido:
+          type: string
+          example: Juan Pedro
+        direccion: 
+          type: string
+          example: Los Rosales 962
+        user: 
+          type: string
+          example: jon56
+        items:
+          type: object
+          properties:
+            productId:
+              type: integer
+              example: 3
+            productCuantity:
+              type: integer
+              example: 4
+  pedidoItem:
+      type: object
+      properties:
+        card:
+          type: boolean
+          example: 1
+        items:
+          type: array
+          items:
+            type: array
+            items:
+               type: integer
+               example: 1,2
+  estadoItem:
+      type: object
+      properties:
+        id_estado:
+          type: integer
+          example: 1
+  
+  
+  
+          
+          
+        
+        
+        
+          
+      
+      
+  
+  
+          
+  
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /gmedici/Delilah/1.0.0
+schemes:
+ - https

@@ -1,0 +1,99 @@
+
+Admin User Login:
+{
+   "usuario":"Rombomondo",
+   "password":"RubenRules"
+   
+}
+User Admin Api Key: eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE
+Common User
+{
+   "usuario":"joan89",
+   "password":"Rofftops"
+   
+};
+User Token is: eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE del usuario joan89"
+
+"El token es eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4 del usuario Rombomondo"
+
+More USers
+{
+   "usuario":"ramonaflowers",
+   "password":"123456"
+   
+};
+{
+   "usuario":"rodolf78",
+   "password":"ba3456"
+   
+};
+{
+   "usuario":"cris",
+   "password":"randalf"
+   
+};
+{
+   "usuario":"marta",
+   "password":"marta"
+   
+};
+{
+   "usuario":"Rulo",
+   "password":"Jug"
+   
+};
+
+User Register Examples:
+{
+"usuario":"marta",
+"nombre_apellido":"Marta Tomillo",
+"email":"tomillo@gmail.com",
+"tel":"249452275",
+"direccion":"Lomo 1367",
+"password":"marta"
+};
+{
+"usuario":"Jeff",
+"nombre_apellido":"Myname",
+"email":"mynameisjeff@gmail.com",
+"tel":"249452275",
+"direccion":"myj 1367",
+"password":"mynameisjeff"
+}
+
+Create order - requires user token
+
+{
+   "card": 0,
+   "items": [[2,3],[1,4]]
+}
+
+Modify state - admin token
+
+{
+   "id_estado":3
+}
+
+Create Product - admin token
+
+{
+        
+        "nombre_producto": "Sandwich de Pescado",
+        "imagen": "https://img.interempresas.net/fotos/1622791.jpeg",
+        "PRECIO": "180.00"
+    }
+
+Edit Product - Admin token
+
+{
+      
+        "nombre_producto": "Sandwich de Pescado",
+        "imagen": "https://img.interempresas.net/fotos/1622791.jpeg",
+        "PRECIO": "180.00"
+}
+
+Create Favorite - Product
+
+{
+        "id_producto": 5
+    }

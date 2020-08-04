@@ -1,0 +1,75 @@
+
+Admin User Login:
+{
+   "usuario":"Rombomondo",
+   "password":"RubenRules"
+   
+}
+User Admin Api Key: eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE
+{
+   "usuario":"joan89",
+   "password":"Rofftops"
+   
+};
+"El token es eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE del usuario joan89"
+{
+   "usuario":"Rombomondo",
+   "password":"RubenRules"
+   
+};
+"El token es eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4 del usuario Rombomondo"
+{
+   "usuario":"ramonaflowers",
+   "password":"123456"
+   
+};
+{
+   "usuario":"rodolf78",
+   "password":"ba3456"
+   
+};
+{
+   "usuario":"cris",
+   "password":"randalf"
+   
+};
+{
+   "usuario":"marta",
+   "password":"marta"
+   
+};
+{
+   "usuario":"Rulo",
+   "password":"Jug"
+   
+};
+"El token es eyJhbGciOiJIUzI1NiJ9.UnVsbw._4D1mezc_tQEp5t-AOq_2IgnVwDwZLfn0Acpx_uqYDY del usuario Rulo"
+///
+ejemplo json para carga de usuarios
+{
+"usuario":"marta",
+"nombre_apellido":"Marta Tomillo",
+"email":"tomillo@gmail.com",
+"tel":"249452275",
+"direccion":"Lomo 1367",
+"password":"marta"
+};
+{
+"usuario":"Jeff",
+"nombre_apellido":"Myname",
+"email":"mynameisjeff@gmail.com",
+"tel":"249452275",
+"direccion":"myj 1367",
+"password":"mynameisjeff"
+}
+
+
+
+El token es eyJhbGciOiJIUzI1NiJ9.bWFydGE.ytnbUVzO5S87rQwGhz7K6LgVyiR5tHdF1-pncNy_gR8 de marta
+
+crear pedido
+{
+   "card": 0,
+   "dt": "2020-11-05 14:22:36",
+   "items": [[2,3],[1,4]]
+}

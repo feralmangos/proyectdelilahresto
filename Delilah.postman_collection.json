@@ -1,0 +1,617 @@
+{
+	"info": {
+		"_postman_id": "fbd96c43-4dd3-499d-b51d-6d14a03af2ad",
+		"name": "Delilah",
+		"description": "Delilah Resto Collection of Requests made for the API. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"usuario\":\"Ruben\",\r\n\"nombre_apellido\":\"Peras\",\r\n\"email\":\"rperas@gmail.com\",\r\n\"tel\":\"249452275\",\r\n\"direccion\":\"Lomo 1367\",\r\n\"password\":\"marta\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/usuarios/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"register"
+					]
+				},
+				"description": " Create User Operation"
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"usuario\":\"ramonaflowers\",\r\n   \"password\":\"123456\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/usuarios/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"login"
+					]
+				},
+				"description": "User provides Username or email and a password and gets a token in return as long as he exists in DB"
+			},
+			"response": [
+				{
+					"name": "Login User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"usuario\":\"ramonaflowers\",\r\n   \"password\":\"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/usuarios/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usuarios",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "121"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"79-yx2vNCENn2ADwd3MddnZXj9o6zI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 31 Jul 2020 01:51:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.cmFtb25hZmxvd2Vycw.EvYTJeDDcl5bRH6aFiLAIr89VwFxG3a03JsXqxziBmU\",\n    \"usuario\": \"ramonaflowers\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/productos/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos",
+						""
+					]
+				},
+				"description": "User Requests Products"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/productos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos",
+						"2"
+					]
+				},
+				"description": "User Requests Products"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"nombre_producto\": \"Sandwich de Miel\",\r\n        \"imagen\": \"https://img.interempresas.net/fotos/1622791.jpeg\",\r\n        \"PRECIO\": \"180.00\"\r\n    }"
+				},
+				"url": {
+					"raw": "localhost:3000/productos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos"
+					]
+				},
+				"description": "Admin Posts Products. In Delilah User Rombomondo is admin. Token for user validation in header."
+			},
+			"response": []
+		},
+		{
+			"name": "Post Product - User - Won't work",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"nombre_producto\": \"Sandwich de Miel\",\r\n        \"imagen\": \"https://img.interempresas.net/fotos/1622791.jpeg\",\r\n        \"PRECIO\": \"180.00\"\r\n    }"
+				},
+				"url": {
+					"raw": "localhost:3000/productos",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos"
+					]
+				},
+				"description": "User Requests Products"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/productos/16",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos",
+						"16"
+					]
+				},
+				"description": "Admin Deletes Products by Id. In Delilah User Rombomondo is admin. Token for user validation in header."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product - User Won't work",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/productos/16",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos",
+						"16"
+					]
+				},
+				"description": "User tries to Delete Products. In Delilah User Rombomondo is admin. Token for user validation should be sent in header."
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"nombre_producto\": \"Hamburguesa de carne\",\r\n        \"imagen\": \"https://img.interempresas.net/fotos/1622791.jpeg\",\r\n        \"PRECIO\": \"180.00\"\r\n    }"
+				},
+				"url": {
+					"raw": "localhost:3000/productos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos",
+						"1"
+					]
+				},
+				"description": "Admin edits Products"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product - User - Won't work",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"nombre_producto\": \"Hamburguesa de carne\",\r\n        \"imagen\": \"https://img.interempresas.net/fotos/1622791.jpeg\",\r\n        \"PRECIO\": \"180.00\"\r\n    }"
+				},
+				"url": {
+					"raw": "localhost:3000/productos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos",
+						"1"
+					]
+				},
+				"description": "User tries to edit Product. Won't work because access is only granted to Admin users for such operations."
+			},
+			"response": []
+		},
+		{
+			"name": "Make order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"card\": 1,\r\n   \"items\": [[1,2],[3,4]]\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"user"
+					]
+				},
+				"description": "User makes order"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Order Status",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id_estado\":2\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"2"
+					]
+				},
+				"description": "Admin modifies order status. Requires User Admin Role. User validation in token."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id_estado\":2\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						""
+					]
+				},
+				"description": "Admin gets all orders. Requires User Admin Role. User validation in token."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Orders from User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id_estado\":2\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/user",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"user"
+					]
+				},
+				"description": "Admin modifies order status. Requires User Admin Role. User validation in token."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Order",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.Um9tYm9tb25kbw.QFqBnDoGLsrqsCbtnROoXZXjztwPZgAPAfyjkIO3bm4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id_estado\":2\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"2"
+					]
+				},
+				"description": "Admin deletes order. Requires User Admin Role. User validation in token."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Order - User - Won't work",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "BEARER eyJhbGciOiJIUzI1NiJ9.am9hbjg5.bYvAdE3H820qvJCTWmRYWIp9RLLTzv_PiWmlgTAobPE"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id_estado\":2\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/pedidos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pedidos",
+						"2"
+					]
+				},
+				"description": "User tries to delete order. access will be restricted"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
